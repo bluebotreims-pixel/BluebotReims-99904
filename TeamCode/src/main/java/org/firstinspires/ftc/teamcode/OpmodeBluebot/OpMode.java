@@ -3,17 +3,21 @@ package org.firstinspires.ftc.teamcode.OpmodeBluebot;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Mecanismes.ConduiteMecanum;
 import org.firstinspires.ftc.teamcode.Mecanismes.Ramassage;
+import org.firstinspires.ftc.teamcode.Mecanismes.Shoot;
 
 @TeleOp
 public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
 
     ConduiteMecanum drive = new ConduiteMecanum();
     Ramassage ramasse = new Ramassage();
+    Shoot lance = new Shoot();
+
 
     @Override
     public void init() {
         drive.init(hardwareMap);
         ramasse.init(hardwareMap);
+        lance.init(hardwareMap);
     }
 
     @Override
@@ -31,6 +35,10 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
             ramasse.ramasse(-1);
         } else {
             ramasse.stop();
+        }
+
+        if (gamepad1.right_trigger > 0.1) {
+            lance.lance(1);
         }
     }
 }
