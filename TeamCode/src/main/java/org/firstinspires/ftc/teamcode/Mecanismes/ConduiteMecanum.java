@@ -7,14 +7,15 @@ public class ConduiteMecanum {
     public DcMotor DevantGauche, ArriereGauche, DevantDroite, ArriereDroite;
 
     public void init(HardwareMap HwMap){
-        DevantDroite = HwMap.get(DcMotor.class, "moteur 0");
-        DevantGauche = HwMap.get(DcMotor.class, "moteur 1");
-        ArriereGauche = HwMap.get(DcMotor.class, "moteur 2");
-        ArriereDroite = HwMap.get(DcMotor.class, "moteur 3");
+        DevantDroite = HwMap.get(DcMotor.class, "moteur0");
+        DevantGauche = HwMap.get(DcMotor.class, "moteur1");
+        ArriereGauche = HwMap.get(DcMotor.class, "moteur2");
+        ArriereDroite = HwMap.get(DcMotor.class, "moteur3");
 
 
         ArriereDroite.setDirection(DcMotor.Direction.REVERSE);
         DevantGauche.setDirection(DcMotor.Direction.REVERSE);
+        DevantDroite.setDirection(DcMotor.Direction.REVERSE);
 
         DevantGauche.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         DevantDroite.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -36,19 +37,19 @@ public class ConduiteMecanum {
         double ArriereDroitePuissance = transversal + lateral - rotation;
 
         double Puissancemax = 1.0;
+        double FacteurPuissance = 0.5;
 
         Puissancemax = Math.max(Puissancemax, Math.abs(DevantGauchePuissance));
         Puissancemax = Math.max(Puissancemax, Math.abs(DevantDroitePuissance));
         Puissancemax = Math.max(Puissancemax, Math.abs(ArriereGauchePuissance));
         Puissancemax = Math.max(Puissancemax, Math.abs(ArriereDroitePuissance));
 
-        DevantGauche.setPower(DevantGauchePuissance / Puissancemax);
-        ArriereGauche.setPower(ArriereGauchePuissance / Puissancemax);
-        DevantDroite.setPower(DevantDroitePuissance / Puissancemax);
-        ArriereDroite.setPower(ArriereDroitePuissance / Puissancemax);
+        DevantGauche.setPower((DevantGauchePuissance / Puissancemax)*FacteurPuissance);
+        ArriereGauche.setPower((ArriereGauchePuissance / Puissancemax)*FacteurPuissance);
+        DevantDroite.setPower((DevantDroitePuissance / Puissancemax)*FacteurPuissance);
+        ArriereDroite.setPower((ArriereDroitePuissance / Puissancemax)*FacteurPuissance);
     }
     public void deplacerSelonRobot(double transversal, double lateral, double rotation){
         this.drive(transversal, lateral, rotation);
     }
-
 }
