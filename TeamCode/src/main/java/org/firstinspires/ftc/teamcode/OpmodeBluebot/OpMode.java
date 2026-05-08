@@ -52,18 +52,19 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
         }
 
 
-        if (gamepad1.right_bumper) {
+        if (gamepad1.dpad_up) {
             angle.tournerDroite();
-        } else if (gamepad1.left_bumper) {
+        } else if (gamepad1.dpad_down) {
             angle.tournerGauche();
         }
 
 
-        // Tourelle : R1 = droite, L1 = gauche
+
+        // Tourelle : R1 = gauche, L1 = droite
         if (gamepad1.right_bumper) {
-            tourelle.tournerDroite();
-        } else if (gamepad1.left_bumper) {
             tourelle.tournerGauche();
+        } else if (gamepad1.left_bumper) {
+            tourelle.tournerDroite();
         } else {
             tourelle.stop();
         }
