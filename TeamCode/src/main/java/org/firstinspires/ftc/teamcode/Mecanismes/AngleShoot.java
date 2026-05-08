@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Mecanismes;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class angle_shoot {
+public class AngleShoot {
 
     public Servo servoAngle;
     private double position = 0.5; // position centrale au départ
