@@ -9,7 +9,6 @@ public class Shoot {
 
     public void init(HardwareMap hwMap) {
         Lanceur = hwMap.get(DcMotor.class, "lanceur");
-        Lanceur.setDirection(DcMotor.Direction.REVERSE);
         Lanceur.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         Lanceur.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }

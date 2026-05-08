@@ -49,6 +49,8 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
         // Shoot
         if (gamepad1.right_trigger > 0.1) {
             lance.lance(1);
+        } else {
+            lance.stop();
         }
 
 
