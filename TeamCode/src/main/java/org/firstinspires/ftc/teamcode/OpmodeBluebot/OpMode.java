@@ -40,5 +40,13 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
         if (gamepad1.right_trigger > 0.1) {
             lance.lance(1);
         }
+
+
+        if (gamepad1.right_bumper) {
+            angle.tournerDroite();
+        } else if (gamepad1.left_bumper) {
+            angle.tournerGauche();
+        }
+
     }
 }
