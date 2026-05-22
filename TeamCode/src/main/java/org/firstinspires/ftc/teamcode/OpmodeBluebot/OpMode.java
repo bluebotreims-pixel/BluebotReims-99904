@@ -25,7 +25,7 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
         ramasse.init(hardwareMap);
         lance.init(hardwareMap);
         tourelle.init(hardwareMap);
-        angle.init(hardwareMap);
+        //angle.init(hardwareMap);
     }
 
     @Override
@@ -53,12 +53,12 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
             lance.stop();
         }
 
-
-        if (gamepad1.dpad_up) {
-            angle.tournerDroite();
-        } else if (gamepad1.dpad_down) {
-            angle.tournerGauche();
-        }
+        // angle désactivé
+        //if (gamepad1.dpad_up) {
+            //angle.tournerDroite();
+        //} else if (gamepad1.dpad_down) {
+            //angle.tournerGauche();
+        //}
 
 
 
