@@ -49,15 +49,22 @@ public class OpMode extends com.qualcomm.robotcore.eventloop.opmode.OpMode {
         // Shoot
         if (gamepad1.right_trigger > 0.1) {
             lance.lance(1);
+        } else {
+            lance.stop();
         }
 
 
-        if (gamepad1.right_bumper) {
-            angle.tournerDroite();
-        } else if (gamepad1.left_bumper) {
-            angle.tournerGauche();
+        if (gamepad1.dpad_up) {
+            angle.monterHaut();
+        } else if (gamepad1.dpad_down) {
+            angle.descendreBas();
+        } else {
+            angle.stop();
         }
 
+        telemetry.addData("AngleShoot", gamepad1.dpad_up ? "HAUT" :
+                gamepad1.dpad_down ? "BAS" : "Stop");
+        telemetry.addData("Puissance servoAngle", angle.servoAngle.getPower());
 
         // Tourelle : R1 = droite, L1 = gauche
         if (gamepad1.right_bumper) {
