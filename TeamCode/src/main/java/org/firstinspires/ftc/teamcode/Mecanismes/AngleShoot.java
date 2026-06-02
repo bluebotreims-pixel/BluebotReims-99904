@@ -1,28 +1,28 @@
 package org.firstinspires.ftc.teamcode.Mecanismes;
 
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 public class AngleShoot {
 
-    public Servo servoAngle;
-    private double position = 0.5; // position centrale au départ
-    private final double PAS = 0.02; // vitesse de rotation
-    private final double MIN = 0.0;
-    private final double MAX = 1.0;
+    public CRServo servoAngle;
+
+    private static final double VITESSE = 1.0;
 
     public void init(HardwareMap hwMap) {
-        servoAngle = hwMap.get(Servo.class, "servoAngle");
-        servoAngle.setPosition(position);
+        servoAngle = hwMap.get(CRServo.class, "servoAngle");
+        servoAngle.setDirection(CRServo.Direction.REVERSE);
     }
 
-    public void tournerDroite() {
-        position = Math.min(MAX, position + PAS);
-        servoAngle.setPosition(position);
+    public void monterHaut() {
+        servoAngle.setPower(VITESSE);
+    }
+    public void descendreBas() {
+        servoAngle.setPower(-VITESSE);
     }
 
-    public void tournerGauche() {
-        position = Math.max(MIN, position - PAS);
-        servoAngle.setPosition(position);
+    public void stop() {
+        servoAngle.setPower(0);
     }
 }
